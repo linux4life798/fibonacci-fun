@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-long fib (long x)
+long fib (int x)
 {
 	if(x <= 2) return 1;
 	else {
@@ -22,6 +22,6 @@ long fib (long x)
 int main(int argc, char *argv[]) {
 	int x = atoi(argv[1]);
 	printf("arg is: %d\n", x);
-	printf("fib(%d) = %ld\n",x,fib((long)x));
+	printf("fib(%d) = %ld\n",x,fib(x));
 	return 0;
 }

@@ -14,7 +14,7 @@
 	#define dprintf(format, ...) ((void)0)
 #endif
 
-long fib(long);
+long fib(int);
 long fib_base(long);
 void *fib_th1(void *);
 void *fib_th2(void *);
@@ -46,15 +46,15 @@ void *fib_th2(void *arg)
 	return ((void *) (0)) ;
 }
 
-long fib (long x)
+long fib (int x)
 {
 	dprintf("fib(%d): started\n",x);
 	if(x <= 2) return 1;
 	else
 	{
 		struct th th1, th2;
-		th1.x = (x-2);
-		th2.x = (x-1);
+		th1.x = (long) (x-2);
+		th2.x = (long) (x-1);
 		th1.y = th2.y = 0;
 
 		pthread_create(&th1.th, NULL, fib_th2, (void *)(&th1));
@@ -69,6 +69,6 @@ long fib (long x)
 int main(int argc, char *argv[]) {
 	int x = atoi(argv[1]);
 	printf("arg is: %d\n", x);
-	printf("fib(%d) = %ld\n",x, fib((long) x));
+	printf("fib(%d) = %ld\n",x, fib(x));
 	return 0;
 }
