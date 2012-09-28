@@ -14,18 +14,18 @@
 	#define dprintf(format, ...) ((void)0)
 #endif
 
-int fib(int);
-int fib_base(int);
+long fib(long);
+long fib_base(long);
 void *fib_th1(void *);
 void *fib_th2(void *);
 
 struct th{
 	pthread_t th;
-	int x;
-	int y;
+	long x;
+	long y;
 };
 
-int fib_base(int x)
+long fib_base(long x)
 {
 	if(x <= 2) return 1;
 	else return (fib_base(x-2) + fib_base(x-1));
@@ -46,7 +46,7 @@ void *fib_th2(void *arg)
 	return ((void *) (0)) ;
 }
 
-int fib (int x)
+long fib (long x)
 {
 	dprintf("fib(%d): started\n",x);
 	if(x <= 2) return 1;
@@ -67,9 +67,8 @@ int fib (int x)
 }
 
 int main(int argc, char *argv[]) {
-	int x = atoi(argv[1]), y;
+	int x = atoi(argv[1]);
 	printf("arg is: %d\n", x);
-	y = fib(x);
-	printf("master fib(%d) = %d\n",x, y);
+	printf("fib(%d) = %ld\n",x, fib((long) x));
 	return 0;
 }
