@@ -3,15 +3,21 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include <inttypes.h>
+#include <limits.h>
 #include <assert.h>
 
-long fib (int x)
+/* uintmax_t has a max value of UINTMAX_MAX */
+typedef uintmax_t fibnum;
+
+fibnum fib (int x)
 {
 	if(x <= 2) return 1;
 	else {
-		long y1 = 1, y2 = 1;
+		fibnum y1 = 1, y2 = 1;
 		for(;x > 2; x--){
-			long tmp = y2;
+			fibnum tmp = y2;
 			y2 += y1;
 			y1 = tmp;
 		}
@@ -22,6 +28,6 @@ long fib (int x)
 int main(int argc, char *argv[]) {
 	int x = atoi(argv[1]);
 	printf("arg is: %d\n", x);
-	printf("fib(%d) = %ld\n",x,fib(x));
+	printf("fib(%d) = %"PRIuMAX"\n",x,fib(x));
 	return 0;
 }
