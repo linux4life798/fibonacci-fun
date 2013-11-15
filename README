@@ -1,9 +1,11 @@
-A couple C programs that calculate the n'th fibonacci number using different methods.
+A couple programs and scripts that calculate the n'th fibonacci number using different methods.
 
 To use, just run "make" in the working directory.
 
-You will now have the following three binaries:
+You will now have the following four executables:
 
 * fib     - uses standard recursion ( fib(n) = fib(n-2) + fib(n-1) )                                     - (Generally Slowest)
 * fib-th  - uses the previous recursive method, but from two different threads                           - (Generally Faster)
 * fib-lin - simply calculates all of the finonacci numbers up to the requested fibonacci number (linear) - (Fastest)
+
+* fib.sh  - uses standard recursion (shell script using /bin/sh)
