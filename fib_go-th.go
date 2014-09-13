@@ -8,7 +8,7 @@ import "strconv"
 /* Keeps track of the number of go threads used */
 var go_count int64 = 0
 
-/* Compute the n'th Fibonacci number recursively */
+/* Compute the n'th Fibonacci number recursively with go routines */
 func fibg(n int, ch chan int) {
 	go_count++
 
